@@ -39,6 +39,19 @@ class BooksController < ApplicationController
 	end
 
 	def get_info
+		#Amazon::Ecs.configure do |options|
+		#	options[:AWS_access_key_id] = 'AKIAIKXBBHGAW7VXE3OQ'
+		#	options[:AWS_secret_key] = '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'
+		#	options[:associate_tag] = 'kamekame0c-22'
+		#end
+
+		Amazon::Ecs.debug = true
+		@res = Amazon::Ecs.item_search(
+			params[:isbn],
+			:search_index => 'Books',
+			:response_group => 'Medium',
+			:country => 'jp'
+		)
 	end
 
 	private

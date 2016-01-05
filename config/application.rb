@@ -8,6 +8,11 @@ Bundler.require(*Rails.groups)
 
 module BookRecorder
   class Application < Rails::Application
+		Amazon::Ecs.options = {
+			:associate_tag => 'kamekame0c-22',
+			:AWS_access_key_id => 'AKIAIKXBBHGAW7VXE3OQ',
+			:AWS_secret_key => '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'
+		}
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration should go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded.
