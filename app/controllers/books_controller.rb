@@ -39,12 +39,6 @@ class BooksController < ApplicationController
 	end
 
 	def get_info
-		#Amazon::Ecs.configure do |options|
-		#	options[:AWS_access_key_id] = 'AKIAIKXBBHGAW7VXE3OQ'
-		#	options[:AWS_secret_key] = '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'
-		#	options[:associate_tag] = 'kamekame0c-22'
-		#end
-
 		Amazon::Ecs.debug = true
 		@res = Amazon::Ecs.item_search(
 			params[:isbn],
@@ -52,11 +46,18 @@ class BooksController < ApplicationController
 			:response_group => 'Medium',
 			:country => 'jp'
 		)
+		info = {
+			'Title' => @res.first_item.get("ItemAttributes/Title"),
+			'Author' => @res.first_item.get("ItemAttributes/Author"),
+			'Manufacturer' => @res.first_item.get("ItemAttributes/Manufacturer"),
+			'ImageURL' => @res.first_item.get("LargeImage/URL"),
+		}
+		render json: info
 	end
 
 	private
 	def book_params
-		params[:book].permit(:isbn, :title, :user_id)
+		params[:book].permit(:isbn, :title, :author, :manufacturer, :user_id)
 	end
 	def set_user
 		@user = User.find(params[:user_id])

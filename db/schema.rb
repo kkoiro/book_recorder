@@ -16,6 +16,8 @@ ActiveRecord::Schema.define(version: 20160105131526) do
   create_table "books", force: true do |t|
     t.string   "isbn"
     t.string   "title"
+    t.string   "author"
+    t.string   "manufacturer"
     t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"

@@ -11,7 +11,7 @@ Rails.application.routes.draw do
 		resources :books
 	end
 
-	get "get_info", :to => "books#get_info", :path => "/users/:user_id/books/new/get_info/:isbn"
+	get "get_info", :to => "books#get_info", :path => "/users/:user_id/books/new/get_info"
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
