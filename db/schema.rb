@@ -14,16 +14,18 @@
 ActiveRecord::Schema.define(version: 20160105131526) do
 
   create_table "books", force: true do |t|
-    t.string   "isbn"
+    t.string   "isbn",         null: false
     t.string   "title"
     t.string   "author"
     t.string   "manufacturer"
-    t.integer  "user_id"
+    t.string   "image"
+    t.integer  "user_id",      null: false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
   create_table "users", force: true do |t|
+    t.string   "username",               default: "", null: false
     t.string   "email",                  default: "", null: false
     t.string   "encrypted_password",     default: "", null: false
     t.string   "reset_password_token"

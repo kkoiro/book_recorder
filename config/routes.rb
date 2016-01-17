@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-  get 'users/show'
 
 	root :to => "home#index"
 
@@ -8,6 +7,10 @@ Rails.application.routes.draw do
 	devise_for :users
 
 	resources :users, :only => [:show] do
+		collection do
+			post :search
+		end
+
 		resources :books
 	end
 

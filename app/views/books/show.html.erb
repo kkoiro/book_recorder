@@ -14,13 +14,17 @@
 <p>
 <b>Manufacturer:</b>
 <%= @book.manufacturer %>
-</p> 
-<p>
-<b>User:</b>
-<%= @book.user_id %>
 </p>
+<% if @book.image %>
+<p>
+<b>Image:</b><br>
+<%= image_tag @book.image.url, height: "100" %>
+</p>
+<p>
+<% end %>
 
-
-<%= link_to 'Edit', [:edit, @user, @book] %> |
-<%= link_to 'Destroy', [@user, @book], :confirm => 'Are you sure?', :method => :delete %> |
+<% if @user.id == current_user.id %>
+<%= link_to 'Edit', edit_user_book_path(@user, @book) %> |
+<%= link_to 'Destroy', user_book_path(@user, @book), :confirm => 'Are you sure?', :method => :delete %> |
+<% end %>
 <%= link_to '一覧', user_books_path %>

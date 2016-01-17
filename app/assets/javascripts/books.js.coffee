@@ -14,10 +14,12 @@ $ ->
 				console.log("error")
 			success: (data) ->
 				console.log("success")
+				console.log(data)
 				if data?
 					$("#book_title").val(data.Title) # タイトル
 					$("#book_author").val(data.Author) # 著者
 					$("#book_manufacturer").val(data.Manufacturer) # 出版社
+					$("#book_image_url").val(data.ImageURL) # URL
 				else
 					$(".alert").css("color","#ff0000").html("書籍情報が見つかりませんでした。");
 

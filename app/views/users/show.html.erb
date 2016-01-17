@@ -1,5 +1,8 @@
 <h1>Users#show</h1>
-<h1>My page (<%= @user.email %>)</h1>
 
-<%= link_to '読書完了', new_user_book_path(@user) %>
-<%= link_to '読了リスト', user_books_path(@user) %>
+<h2><%= "#{@user.username}さんが読んだ本は#{@books.count}冊です" %></h2>
+
+<% if @user.id == current_user.id %>
+<%= link_to 'Registration', new_user_book_path(@user) %>
+<% end %>
+<%= link_to 'Book List', user_books_path(@user) %>
