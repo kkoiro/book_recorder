@@ -11,7 +11,7 @@ class UsersController < ApplicationController
 		@users = User.where("username like ?", "%#{params[:username]}%")
 			render :template => "home/index"
 		else
-			redirect_to(home_index_path, :notice => "Input username into textbox")
+			redirect_to(home_index_path, :alert => "Input username you want to search into textbox")
 		end
 	end
 

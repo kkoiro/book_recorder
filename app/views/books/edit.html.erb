@@ -7,7 +7,7 @@
 
 			<ul>
 				<% @book.errors.full_messages.each do |msg| %>
-					<li><%= msg %></li>
+					<div class="alert fade in alert-danger "><button class="close" data-dismiss="alert" type="button">&times;</button><%= msg %></div>
 				<% end %>
 			</ul>
 		</div>

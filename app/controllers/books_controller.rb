@@ -71,7 +71,7 @@ class BooksController < ApplicationController
 
 	def check_user
 		unless @user.id == current_user.id
-			redirect_to(user_path(@user), :notice => 'You cannnot change another user data')
+			redirect_to(user_path(@user), :alert => 'You cannnot change another user data')
 		end
 	end
 

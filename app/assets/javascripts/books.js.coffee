@@ -10,7 +10,7 @@ $ ->
 			dataType: "json"
 			context: this
 			error: (XMLHttpRequest, textStatus, errorThrown) ->
-				$(".alert").css("color","#ff0000").html("書籍情報が見つかりません")
+				$(".mes").html("<div class='alert fade in alert-danger'>書籍情報が見つかりません</div>")
 				console.log("error")
 			success: (data) ->
 				console.log("success")
@@ -21,6 +21,6 @@ $ ->
 					$("#book_manufacturer").val(data.Manufacturer) # 出版社
 					$("#book_image_url").val(data.ImageURL) # URL
 				else
-					$(".alert").css("color","#ff0000").html("書籍情報が見つかりませんでした。");
-
-	$("#book_isbn").change -> $(".alert").html("")
+				$(".mes").html("<div class='alert fade in alert-danger'>書籍情報が見つかりません</div>")
+			$("#book_isbn").change ->
+				$(".mes").html("")
