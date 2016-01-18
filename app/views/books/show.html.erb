@@ -1,3 +1,4 @@
+<div class="row">
 <p>
 <b>Isbn:</b>
 <%= @book.isbn %>
@@ -15,16 +16,20 @@
 <b>Manufacturer:</b>
 <%= @book.manufacturer %>
 </p>
-<% if @book.image %>
-<p>
-<b>Image:</b><br>
-<%= image_tag @book.image.url, height: "100" %>
+<b>Registered Date:</b>
+<%= @book.created_at %>
 </p>
-<p>
+<% if @book.image %>
+	<%= image_tag @book.image.url, :class => "img-responsive" %>
 <% end %>
+</div>
 
+<div class="row">
+<h3>
 <% if @user.id == current_user.id %>
-<%= link_to 'Edit', edit_user_book_path(@user, @book) %> |
-<%= link_to 'Destroy', user_book_path(@user, @book), :confirm => 'Are you sure?', :method => :delete %> |
+<%= link_to '編集', edit_user_book_path(@user, @book) %> |
+<%= link_to '削除', user_book_path(@user, @book), :confirm => 'Are you sure?', :method => :delete %> |
 <% end %>
 <%= link_to '一覧', user_books_path %>
+</h3>
+</div>

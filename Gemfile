@@ -7,6 +7,7 @@ gem 'amazon-ecs'
 gem 'carrierwave'
 gem 'less-rails'
 gem 'twitter-bootstrap-rails'
+gem 'devise-bootstrap-views'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.1.1'

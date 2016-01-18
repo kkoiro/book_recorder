@@ -36,7 +36,7 @@ class BooksController < ApplicationController
 
 	def destroy
 		@book.destroy
-		redirect_to(user_books_path(@user, @book))
+		redirect_to(user_books_path(@user))
 	end
 
 	def get_info

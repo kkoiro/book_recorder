@@ -1,22 +1,48 @@
-<h1>Home#index</h1>
-
+	<div class='row'>
+		<h1>Welcome 
+			<% if user_signed_in? %>
+				<%= @user.username %>さん
+				<% else %>
+				Guestさん
+				<% end %>
+		</h1>
+</div>
+	<div class='row'>
+		<h2>About</h2>
+		<p>このページは2015年度秋学期スクリプト言語プログラミング基礎の最終課題として作られました。このサービスを用いて、以下のことが出来ます。
+			<li>読み終わった本の登録、管理</li>
+			<li>他ユーザーが読んだ本の確認</li><br>
+			右上のボタンからサインイン出来ます。登録がお済みでない方は、<%= link_to 'ユーザー登録', new_user_registration_path %>をお願いします。
+		</p>
+	</div><br>
 <% if user_signed_in? %>
-<p>You are <%= @user.username %></p>
-<%= form_tag("/users/search", :method => :post) do %>
-	<p>
+	<div class='row'>
+		<h2>ユーザー検索</h2>
+		<p>ユーザー名で気になるユーザーを検索できます。</p>
+<%= form_tag("/users/search", :method => :post, :class => 'form-inline') do %>
+	<div class="form-group">
 	<%= label_tag :username %>
 	<%= text_field_tag :username %>
+	</div>
 	<%= submit_tag 'Search' %>
-	</p>
-<% end %>
+<% end %><br>
 
 <% if @users %>
+	<table class="table table-striped">
+		<tr>
+			<th>#</th>
+			<th>User Name</th>
+		</tr>
+	<% count = 1 %>
 	<% @users.each do |user|%>
-		<p><%= link_to "#{user.username}", user_path(user) %></p>
+		<tr>
+			<td><%= count %></td>
+			<td><%= link_to "#{user.username}", user_path(user) %></td>
+		</tr>
+	<% count += 1 %>
 	<% end %>
+	</table>
 <% end %>
 
-<% else %>
-	<p><%= link_to 'Login', new_user_session_path %></p>
-	<p><%= link_to 'Sign Up', new_user_registration_path %></p>
+</div><br>
 <% end %>
